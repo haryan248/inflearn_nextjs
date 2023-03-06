@@ -1,0 +1,148 @@
+$header-height: 60px;
+$section-padding-top: 8px;
+
+.detailSection {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 101;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: $section-padding-top 16px 16px;
+  background-color: white;
+  color: #444444;
+
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  box-shadow: 0 -2px 8px 0 rgba(136, 136, 136, 0.3);
+
+  transition: transform 800ms;
+  transform: translateY(
+    calc(100% - #{$header-height} - #{$section-padding-top})
+  );
+  &.selected {
+    transform: translateY(calc(100% - 160px));
+  }
+  &.expanded {
+    transform: translateY(0);
+  }
+}
+
+.header {
+  height: $header-height;
+  margin-bottom: 8px;
+
+  display: flex;
+  flex-direction: column;
+
+  .arrowButton {
+    height: 20px;
+    align-self: center;
+
+    border: none;
+    background-color: transparent;
+
+    &:disabled {
+      opacity: 0.2;
+      cursor: not-allowed;
+    }
+    &.expanded {
+      transform: rotate(180deg);
+    }
+
+    @keyframes bounce {
+      from {
+        transform: translateY(0);
+      }
+      to {
+        transform: translateY(-5px);
+      }
+    }
+    svg {
+      animation: bounce 500ms infinite alternate ease-in;
+    }
+  }
+
+  .title {
+    margin: 4px 0;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .flexRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.detailContent {
+  height: 100%;
+  overflow: hidden;
+  &.expanded {
+    overflow: scroll;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  h2 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 8px 0;
+  }
+
+  hr {
+    border-bottom: none;
+    border-top: 1px solid #eef0f3;
+    margin: 16px 0;
+  }
+
+  .images {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(auto, 120px));
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .description {
+    p {
+      margin: 4px 0;
+    }
+  }
+
+  .basicInfo {
+    div {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+
+      span {
+        margin-left: 4px;
+        font-size: 1rem;
+      }
+
+      a {
+        color: #64c0a9;
+      }
+    }
+  }
+
+  .menus {
+    .menu {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 16px;
+
+      .name {
+        max-width: 70%;
+        word-break: keep-all;
+      }
+    }
+  }
+}
