@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://inflearn-nextjs.vercel.app
+
+# Sitemaps
+Sitemap: https://inflearn-nextjs.vercel.app/sitemap.xml
