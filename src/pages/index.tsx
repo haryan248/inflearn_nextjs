@@ -1,7 +1,7 @@
 import { Fragment, useEffect } from 'react';
 import HomeHeader from '../../components/home/Header';
 import MapSection from '../../components/home/MapSection';
-
+import DetailSection from '../../components/home/DetailSection';
 import { NextPage } from 'next';
 import { Store } from '../../types/store';
 import useStores from '../../hooks/useStores';
@@ -21,6 +21,7 @@ const Home: NextPage<Props> = ({ stores }) => {
     <Fragment>
       <HomeHeader></HomeHeader>
       <MapSection></MapSection>
+      <DetailSection></DetailSection>
     </Fragment>
   );
 };
