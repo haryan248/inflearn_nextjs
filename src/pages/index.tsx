@@ -45,11 +45,19 @@ const Home: NextPage<Props> = ({ stores }) => {
 };
 export default Home;
 
+// api 로직과 ui 로직을 분리할 수 있음
+// 클라이언트 단 로직을 수정하는것이 아니라
+// api 폴더 하위의 코드만 수정하면됌
+// 백앤드와 프론트의 결합도를 낮춰줌
+// 실제 백엔드 url 노출을 막을 수 있음
+
 export async function getStaticProps() {
-  // const stores = await fetch(
-  //   `${process.env.NEXT_PUBLIC_API_URL}/api/stores`
-  // ).then((response) => response.json());
-  const stores = (await import('../../public/stores.json')).default;
+  // API 추가
+  // NEXT_PUBLIC으
+  const stores = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/stores`
+  ).then((response) => response.json());
+  // const stores = (await import('../../public/stores.json')).default;
 
   return {
     props: { stores },
